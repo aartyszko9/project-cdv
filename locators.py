@@ -29,3 +29,6 @@ class CreateAnAccountPageLocators():
     ADDRESS_INPUT = (By.CSS_SELECTOR, '#address1')
     STATE_SELECT = (By.ID, 'id_state')
     SUBMIT_BTN = (By.ID, 'submitAccount')
+
+class MyAccountLocators():
+    TITLE = (By.CLASS_NAME, 'page-heading')

@@ -4,6 +4,7 @@ import time
 from Pages.main_page import MainPage
 from Pages.authentication_page import AuthenticationPage
 from Pages.registration_page import RegisterUp
+from Pages.my_account_page import MyAccountPage
 
 
 class RegistrationTest(BaseTest):
@@ -14,6 +15,7 @@ class RegistrationTest(BaseTest):
         mp = MainPage
         ap = AuthenticationPage
         rp = RegisterUp
+        map = MyAccountPage
         mp.click_sign_in_btn(self)
         ap.insert_email_to_input(self)
         ap.click_create_account_btn(self)
@@ -30,7 +32,7 @@ class RegistrationTest(BaseTest):
         rp.insert_additional_inf(self)
         rp.select_date_of_birth(self)
         rp.submit_registration_form(self)
-        time.sleep(5)
+        map.expectMyAccountTitle(self)
 
     def test_using_exsisting_email(self):
         print('Test Case 2: Registration using exsisting email - expect message saying that email is taken')
