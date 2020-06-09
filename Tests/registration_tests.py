@@ -1,9 +1,8 @@
 import unittest
 from Tests.base_test import BaseTest
-import time
 from Pages.main_page import MainPage
 from Pages.authentication_page import AuthenticationPage
-from Pages.registration_page import RegisterUp
+from Pages.registration_page import RegisterUpPage
 from Pages.my_account_page import MyAccountPage
 
 
@@ -11,14 +10,14 @@ class RegistrationTest(BaseTest):
 
     def test_succesfull_registrarion(self):
         print('Test Case 1: Registration happy path')
-        self.driver.implicitly_wait(20)
+        self.driver.implicitly_wait(10)
         mp = MainPage
         ap = AuthenticationPage
-        rp = RegisterUp
+        rp = RegisterUpPage
         map = MyAccountPage
         mp.click_sign_in_btn(self)
-        ap.insert_email_to_input(self)
-        ap.click_create_account_btn(self)
+        ap.insert_email(self)
+        ap.submit(self)
         rp.click_mrs_radio_btn(self)
         rp.insert_first_name(self)
         rp.insert_last_name(self)
@@ -37,24 +36,36 @@ class RegistrationTest(BaseTest):
 
     def test_using_exsisting_email(self):
         print('Test Case 2: Registration using exsisting email - expect alert saying that email is taken')
-        self.driver.implicitly_wait(20)
+        self.driver.implicitly_wait(10)
         mp = MainPage
         ap = AuthenticationPage
         mp.click_sign_in_btn(self)
         ap.insert_exsising_email(self)
-        ap.click_create_account_btn(self)
+        ap.submit(self)
         ap.expect_alert_exsisting_email(self)
 
     def test_using_invalid_email(self):
         print('Test Case 3: Registration using invalid email - expect alert "Invalid email address" ')
-        self.driver.implicitly_wait(20)
+        self.driver.implicitly_wait(10)
         mp = MainPage
         ap = AuthenticationPage
         mp.click_sign_in_btn(self)
         ap.insert_invalid_email(self)
-        ap.click_create_account_btn(self)
+        ap.submit(self)
         ap.expect_alert_invalid_email(self)
-        time.sleep(5)
+
+    def test_short_password(self):
+        print('Test Case 4: Inserted password is too short - expect alert "Password is invalid"')
+        self.driver.implicitly_wait(10)
+        mp = MainPage
+        ap = AuthenticationPage
+        rp = RegisterUpPage
+        mp.click_sign_in_btn(self)
+        ap.insert_email(self)
+        ap.submit(self)
+        rp.insert_short_password(self)
+        rp.submit_registration_form(self)
+        rp.expect_alert_invalid_password(self)
 
 
 if __name__ == '__main__':

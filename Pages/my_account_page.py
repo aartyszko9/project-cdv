@@ -1,9 +1,5 @@
 from selenium.common.exceptions import NoSuchElementException
 from locators import MyAccountLocators
-from selenium.webdriver.common.keys import Keys
-import time
-from selenium.webdriver.support.ui import Select
-from Pages import authentication_page
 
 class MyAccountPage():
 

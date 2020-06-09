@@ -1,19 +1,19 @@
 from selenium.common.exceptions import NoSuchElementException
 from locators import CreateAnAccountPageLocators
-from selenium.webdriver.common.keys import Keys
+
 import time
 from selenium.webdriver.support.ui import Select
 from Pages import authentication_page
-from locators import AuthenticationPageLocators
 
 
 
-class RegisterUp():
+class RegisterUpPage():
 
     # YOUR PERSONAL INFORMATION:
     first_name = 'testname'
     last_name = 'testsurname'
     password = 'Test123!'
+    short_password = 'test'
     # DATE OF BIRTH:
     date = '7'
     month = 'February'
@@ -35,60 +35,60 @@ class RegisterUp():
     def insert_first_name(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.FIRST_NAME_INPUT1)
-            el.send_keys(RegisterUp.first_name)
+            el.send_keys(RegisterUpPage.first_name)
         except NoSuchElementException:
             print('FIRST NAME INPUT not found')
 
     def insert_last_name(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.LAST_NAME_INPUT)
-            el.send_keys(RegisterUp.last_name)
+            el.send_keys(RegisterUpPage.last_name)
         except NoSuchElementException:
             print('LAST NAME INPUT not found')
 
     def insert_password(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.PASSWD_INPUT)
-            el.send_keys(RegisterUp.password)
+            el.send_keys(RegisterUpPage.password)
         except NoSuchElementException:
             print('PASSWORD INPUT not found')
 
     def insert_city(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.CITY_INPUT)
-            el.send_keys(*RegisterUp.city)
+            el.send_keys(*RegisterUpPage.city)
         except NoSuchElementException:
             print('CITY INPUT not found')
 
     def insert_postal_code(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.POSTAL_CODE_INPUT)
-            el.send_keys(RegisterUp.postal_code)
+            el.send_keys(RegisterUpPage.postal_code)
         except NoSuchElementException:
             print('POSTAL CODE not found')
 
     def insert_mobile_phone(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.MOBILE_PHONE_INPUT)
-            el.send_keys(RegisterUp.mobile_phone)
+            el.send_keys(RegisterUpPage.mobile_phone)
         except NoSuchElementException:
             print('MOBILE PHONE INPUT not found')
 
     def insert_additional_inf(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.ADDITIONAL_INF_INPUT)
-            el.send_keys(RegisterUp.additional_inf)
+            el.send_keys(RegisterUpPage.additional_inf)
         except NoSuchElementException:
             print('ADDITIONAL INF INPUT not found')
 
     def select_date_of_birth(self):
         try:
             date = self.driver.find_element(*CreateAnAccountPageLocators.DATE)
-            date.send_keys(RegisterUp.date)
+            date.send_keys(RegisterUpPage.date)
             month = self.driver.find_element(*CreateAnAccountPageLocators.MONTH)
-            month.send_keys(RegisterUp.month)
+            month.send_keys(RegisterUpPage.month)
             year = self.driver.find_element(*CreateAnAccountPageLocators.YEAR)
-            year.send_keys(RegisterUp.year)
+            year.send_keys(RegisterUpPage.year)
             time.sleep(5)
         except NoSuchElementException:
             print('DATE OF BIRTH element not found')
@@ -96,7 +96,7 @@ class RegisterUp():
     def insert_address(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.ADDRESS_INPUT)
-            el.send_keys(RegisterUp.address)
+            el.send_keys(RegisterUpPage.address)
         except NoSuchElementException:
             print('ADDRESS_INPUT not found')
 
@@ -122,3 +122,20 @@ class RegisterUp():
         except NoSuchElementException:
             print('SUBMIT not found')
 
+    def insert_short_password(self):
+        try:
+            input = self.driver.find_element(*CreateAnAccountPageLocators.PASSWD_INPUT)
+            input.send_keys(RegisterUpPage.short_password)
+            text = self.driver.find_element(*CreateAnAccountPageLocators.PASSWD_TEXT)
+            text.text == '(Five characters minimum)'
+        except NoSuchElementException:
+            print('PASSWO_INPUT not found')
+
+    def expect_alert_invalid_password(self):
+        try:
+            el = self.driver.find_element(*CreateAnAccountPageLocators.ALERT_PASSWD)
+            el.text == "passwd is invalid"
+        except NoSuchElementException:
+            print('ALERT not found')
+        except AssertionError:
+            print('assertion error')

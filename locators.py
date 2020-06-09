@@ -17,6 +17,7 @@ class CreateAnAccountPageLocators():
     FIRST_NAME_INPUT1 = (By.CSS_SELECTOR, '#customer_firstname')
     LAST_NAME_INPUT = (By.CSS_SELECTOR, '#customer_lastname')
     PASSWD_INPUT = (By.CSS_SELECTOR, '#passwd')
+    PASSWD_TEXT = (By.CSS_SELECTOR, '.form_info')
     EMAIL_INPUT = (By.ID, 'email')
     # DATE OF BIRTH:
     DATE = (By.CSS_SELECTOR, '#days')
@@ -30,6 +31,7 @@ class CreateAnAccountPageLocators():
     ADDRESS_INPUT = (By.CSS_SELECTOR, '#address1')
     STATE_SELECT = (By.ID, 'id_state')
     SUBMIT_BTN = (By.ID, 'submitAccount')
+    ALERT_PASSWD = (By.XPATH, './/*[@id="center_column"]/div/ol/li[4]')
 
 class MyAccountLocators():
     TITLE = (By.CLASS_NAME, 'page-heading')
