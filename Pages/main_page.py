@@ -10,3 +10,10 @@ class MainPage():
             el.click()
         except NoSuchElementException:
             print('SIGN_IN_BTN not found')
+
+    def click_tshirt_link(self):
+        try:
+            el = self.driver.find_element(*MainPageLocators.TSHIRT_LINK)
+            el.click()
+        except NoSuchElementException:
+            print('TSHIRT_LINK not found')

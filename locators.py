@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 class MainPageLocators():
 
     SIGN_IN_BTN = (By.CLASS_NAME, 'login')
+    TSHIRT_LINK = (By.CSS_SELECTOR, '.sf-menu > :nth-child(3) > a')
 
 class AuthenticationPageLocators():
 
