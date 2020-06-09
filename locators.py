@@ -8,6 +8,7 @@ class AuthenticationPageLocators():
 
     EMAIL_INPUT = (By.CSS_SELECTOR, '#email_create')
     CREATE_ACCOUNT_BTN = (By.CSS_SELECTOR, '#SubmitCreate')
+    ALERT_MESSAGE = (By.ID, 'create_account_error')
 
 class CreateAnAccountPageLocators():
 
@@ -32,3 +33,4 @@ class CreateAnAccountPageLocators():
 
 class MyAccountLocators():
     TITLE = (By.CLASS_NAME, 'page-heading')
+    WELCOME_TEXT = (By.CLASS_NAME, 'info-account')

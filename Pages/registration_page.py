@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.support.ui import Select
 from Pages import authentication_page
+from locators import AuthenticationPageLocators
 
 
 
@@ -120,3 +121,4 @@ class RegisterUp():
             el.click()
         except NoSuchElementException:
             print('SUBMIT not found')
+
