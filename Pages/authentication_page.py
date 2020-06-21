@@ -1,16 +1,10 @@
 from selenium.common.exceptions import NoSuchElementException
 from locators import AuthenticationPageLocators
-from helpers import Helpers
 import time
-
-
-email = 'aartyszko+' + Helpers.randomString(5) + '@gmail.com'
-exsisting_email = 'aartyszko@gmail.com'
-invalid_email = 'aartyszko.com'
 
 class AuthenticationPage():
 
-    def insert_email(self):
+    def insert_email(self, email):
         try:
             el = self.driver.find_element(*AuthenticationPageLocators.EMAIL_INPUT)
             el.send_keys(email)
@@ -25,14 +19,6 @@ class AuthenticationPage():
         except NoSuchElementException:
             print('CREATE ACCOUNT BTN not found')
 
-    def insert_exsising_email(self):
-        try:
-            el = self.driver.find_element(*AuthenticationPageLocators.EMAIL_INPUT)
-            el.click()
-            el.send_keys(exsisting_email)
-        except NoSuchElementException:
-            print('EMAIL_INPUT not found')
-
     def expect_alert_exsisting_email(self):
         try:
             el = self.driver.find_element(*AuthenticationPageLocators.ALERT_MESSAGE)
@@ -41,13 +27,6 @@ class AuthenticationPage():
             print('ALERT_MESSAGE not found')
         except AssertionError:
             print('expect_alert assertion error')
-
-    def insert_invalid_email(self):
-        try:
-            el = self.driver.find_element(*AuthenticationPageLocators.EMAIL_INPUT)
-            el.send_keys(invalid_email)
-        except NoSuchElementException:
-            print('EMAIL_INPUT not found')
 
     def expect_alert_invalid_email(self):
         try:
