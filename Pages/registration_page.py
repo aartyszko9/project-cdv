@@ -134,7 +134,7 @@ class RegisterUpPage():
     def expect_alert_invalid_password(self):
         try:
             el = self.driver.find_element(*CreateAnAccountPageLocators.ALERT_PASSWD)
-            el.text == "passwd is invalid"
+            assert el.text == 'passwd is invalid.'
         except NoSuchElementException:
             print('ALERT not found')
         except AssertionError:

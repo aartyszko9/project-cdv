@@ -9,4 +9,8 @@ class BaseTest(unittest.TestCase):
         self.driver.maximize_window()
 
     def tearDown(self):
+        for method, error in self._outcome.errors:
+            if error:
+                test_method_name = self._testMethodName
+                file = self.driver.save_screenshot("../Screenshots/%s.png" % test_method_name)
         self.driver.quit()

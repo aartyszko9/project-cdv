@@ -34,6 +34,7 @@ class CreateAnAccountPageLocators():
     SUBMIT_BTN = (By.ID, 'submitAccount')
     ALERT_PASSWD = (By.XPATH, './/*[@id="center_column"]/div/ol/li[4]')
 
-class MyAccountLocators():
+class MyAccountPageLocators():
     TITLE = (By.CLASS_NAME, 'page-heading')
     WELCOME_TEXT = (By.CLASS_NAME, 'info-account')
+
