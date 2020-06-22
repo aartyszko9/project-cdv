@@ -37,4 +37,11 @@ class AuthenticationPage():
         except AssertionError:
             print('expect_alert assertion error')
 
+    def click_remind_passwd_link(self):
+        try:
+            el = self.driver.find_element(*AuthenticationPageLocators.REMIND_PASSWD_LINK)
+            el.click()
+        except NoSuchElementException:
+            print('REMIND_PASSWD_lINK not found')
+
 

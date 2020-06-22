@@ -10,6 +10,7 @@ class AuthenticationPageLocators():
     EMAIL_INPUT = (By.CSS_SELECTOR, '#email_create')
     CREATE_ACCOUNT_BTN = (By.CSS_SELECTOR, '#SubmitCreate')
     ALERT_MESSAGE = (By.ID, 'create_account_error')
+    REMIND_PASSWD_LINK = (By.CSS_SELECTOR, '[title="Recover your forgotten password"]')
 
 class CreateAnAccountPageLocators():
 
@@ -37,4 +38,12 @@ class CreateAnAccountPageLocators():
 class MyAccountPageLocators():
     TITLE = (By.CLASS_NAME, 'page-heading')
     WELCOME_TEXT = (By.CLASS_NAME, 'info-account')
+
+
+class RemindPasswordLocators():
+    EMAIL_INPUT = (By.CSS_SELECTOR, '#email')
+    PAGE_SUBHEADING = (By.CLASS_NAME, 'page-subheading')
+    SUBMIT = (By.CSS_SELECTOR, '.submit button')
+    ALERT_SUCCESS = (By.CSS_SELECTOR, '.alert.alert-success')
+    ALERT_DANGER = (By.CSS_SELECTOR, '.alert.alert-danger ol')
 

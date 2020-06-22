@@ -11,7 +11,7 @@ from helpers import Helpers
 @ddt
 class RegistrationTest(BaseTest):
 
-    @data(*get_csv_data('../Data/test_succesfull_registration.csv'))
+    @data(*get_csv_data('./Data/test_succesfull_registration.csv'))
     @unpack
     def test_succesfull_registrarion(self, first_name, last_name, email_prefix, password, date, month, year, state, address, city, postal_code, mobile_phone, additional_inf):
         print('Test Case 1: Registration happy path')
@@ -39,7 +39,7 @@ class RegistrationTest(BaseTest):
         map.expectMyAccountTitle(self)
         map.expectWelcomeText(self)
 
-    @data(*get_csv_data('../Data/test_using_existing_email.csv'))
+    @data(*get_csv_data('./Data/test_using_existing_email.csv'))
     @unpack
     def test_using_existing_email(self, existing_email):
         print('Test Case 2: Registration using exsisting email - expect alert saying that email is taken')
@@ -51,7 +51,7 @@ class RegistrationTest(BaseTest):
         ap.submit(self)
         ap.expect_alert_exsisting_email(self)
 
-    @data(*get_csv_data('../Data/test_using_invalid_email.csv'))
+    @data(*get_csv_data('./Data/test_using_invalid_email.csv'))
     @unpack
     def test_using_invalid_email(self, invalid_email):
         print('Test Case 3: Registration using invalid email - expect alert "Invalid email address" ')
@@ -63,7 +63,7 @@ class RegistrationTest(BaseTest):
         ap.submit(self)
         ap.expect_alert_invalid_email(self)
 
-    @data(*get_csv_data('../Data/test_short_password.csv'))
+    @data(*get_csv_data('./Data/test_short_password.csv'))
     @unpack
     def test_short_password(self, email_prefix, short_password):
         print('Test Case 4: Inserted password is too short - expect alert "Password is invalid"')
